@@ -24,7 +24,11 @@ function traducirNombre(nombreIngles) {
 }
 
 function obtenerPersonaje() {
-  fetch('https://thesimpsonsquoteapi.glitch.me/quotes')
+  // Usamos el proxy CORS para evitar el bloqueo del navegador
+  var urlApi = 'https://thesimpsonsquoteapi.glitch.me/quotes';
+  var urlProxy = 'https://corsproxy.io/?' + encodeURIComponent(urlApi);
+
+  fetch(urlProxy)
     .then(function(respuesta) {
       return respuesta.json();
     })
@@ -41,10 +45,13 @@ function obtenerPersonaje() {
             '<p>"' + personaje.quote + '"</p>' +
           '</div>' +
         '</div>';
+    })
+    .catch(function(error) {
+      console.log('Error al obtener datos:', error);
     });
 }
 
 boton.addEventListener('click', obtenerPersonaje);
 
-// Carga inicial al abrir
+// Carga inicial
 obtenerPersonaje();
