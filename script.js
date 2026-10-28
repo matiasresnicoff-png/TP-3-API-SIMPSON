@@ -1,47 +1,81 @@
 var boton = document.getElementById('boton');
 var resultado = document.getElementById('resultado');
 
-// URLs directas de CDN estables para evitar bloqueos de imagen
 var personajes = [
   {
     nombre: "Homero Simpson",
     frase: "¡A la grande le puse Cuca!",
-    imagen: "https://assets.stickpng.com/images/580b57fbd9996e24bc43c0a8.png"
+    imagen: "img/homero.png"
   },
   {
     nombre: "Bart Simpson",
     frase: "¡Yo no fui! / ¡Ay, caramba!",
-    imagen: "https://assets.stickpng.com/images/580b57fbd9996e24bc43c0a5.png"
+    imagen: "img/bart.png"
   },
   {
     nombre: "Lisa Simpson",
     frase: "¡Si alguien me necesita, estaré en mi habitación!",
-    imagen: "https://assets.stickpng.com/images/580b57fbd9996e24bc43c0a7.png"
+    imagen: "img/lisa.png"
   },
   {
     nombre: "Marge Simpson",
     frase: "Mmm... no lo sé, Homero.",
-    imagen: "https://assets.stickpng.com/images/580b57fbd9996e24bc43c0a6.png"
+    imagen: "img/marge.png"
   },
   {
     nombre: "Maggie Simpson",
     frase: "(Chupeteo de chupete)",
-    imagen: "https://assets.stickpng.com/images/580b57fbd9996e24bc43c0a4.png"
+    imagen: "img/maggie.png"
   },
   {
     nombre: "Ned Flanders",
     frase: "¡Hola, holita, vecirijillo!",
-    imagen: "https://assets.stickpng.com/images/580b57fbd9996e24bc43c0a9.png"
+    imagen: "img/flanders.png"
   },
   {
     nombre: "Moe Szyslak",
     frase: "Taberna de Moe, ¿habla la persona que busca a Amanda Vas a Gozar?",
-    imagen: "https://assets.stickpng.com/images/580b57fbd9996e24bc43c0ab.png"
+    imagen: "img/moe.png"
   },
   {
     nombre: "Sr. Burns",
     frase: "Excelente...",
-    imagen: "https://assets.stickpng.com/images/580b57fbd9996e24bc43c0aa.png"
+    imagen: "img/burns.png"
+  },
+  {
+    nombre: "Milhouse Van Houten",
+    frase: "¡Todo va saliendo a pedir de Milhouse!",
+    imagen: "img/milhouse.png"
+  },
+  {
+    nombre: "Krusti el Payaso",
+    frase: "¡Hey, hey, niños!",
+    imagen: "img/krusty.png"
+  },
+  {
+    nombre: "Apu Nahasapeemapetilon",
+    frase: "Gracias, vuelva pronto.",
+    imagen: "img/apu.png"
+  },
+  {
+    nombre: "Jefe Gorgory",
+    frase: "Sus historias me conmueven, pero la ley es la ley.",
+    imagen: "img/gorgory.png"
+  },
+  {
+    nombre: "Seymour Skinner",
+    frase: "¡No, son los niños los que están mal!",
+    imagen: "img/skinner.png"
+  },
+  {
+    nombre: "Barney Gumble",
+    frase: "¡No lloren por mí, ya estoy muerto!",
+    imagen: "img/barney.png"
+  },
+  {
+    nombre: "Abuelo Simpson",
+    frase: "Estaba en onda, pero luego cambiaron la onda...",
+    imagen: "img/abuelo.png"
   }
 ];
 
@@ -63,5 +97,5 @@ function obtenerPersonaje() {
 
 boton.addEventListener('click', obtenerPersonaje);
 
-// Cargar personaje inicial
+// Carga inicial
 obtenerPersonaje();
