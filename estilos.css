@@ -3,108 +3,95 @@
   }
   
   body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f7f9fc;
-    color: #2d3748;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #202329;
+    color: #ffffff;
     margin: 0;
-    padding: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
   }
   
   header {
-    background-color: #ffd900;
     width: 100%;
-    padding: 30px 20px;
+    background-color: #1a1c20;
+    padding: 25px 20px;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid #ffd900;
   }
   
   h1 {
     margin: 0 0 15px 0;
-    color: #1a202c;
-    font-size: 2.2rem;
+    color: #ffd900;
+    font-size: 2rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
   }
   
   button {
-    background-color: #0076d6;
-    color: #ffffff;
+    background-color: #ffd900;
+    color: #1a1c20;
     border: none;
-    padding: 12px 26px;
-    font-size: 1.1rem;
+    padding: 12px 24px;
+    font-size: 1rem;
     font-weight: bold;
-    border-radius: 25px;
+    border-radius: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-    transition: all 0.2s ease;
+    transition: background-color 0.2s, transform 0.2s;
   }
   
   button:hover {
-    background-color: #00509d;
-    transform: translateY(-2px);
+    background-color: #e6c200;
+    transform: translateY(-1px);
   }
   
   main {
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
+    padding: 30px 20px;
   }
   
-  /* Tarjeta Limpia y Funcional */
   #resultado {
-    background-color: #ffffff;
-    width: 340px;
-    border-radius: 16px;
+    background-color: #3c3e44;
+    width: 300px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   }
   
   .tarjeta-vacia {
-    padding: 40px 20px;
+    padding: 30px;
     text-align: center;
-    color: #718096;
+    color: #9e9e9e;
   }
   
   #resultado img {
     width: 100%;
-    height: 280px;
+    height: 260px;
     object-fit: contain;
-    background-color: #fff9db;
-    padding: 20px;
+    background-color: #272b33;
+    padding: 15px;
   }
   
   .info {
-    padding: 24px;
+    padding: 20px;
   }
   
   .info h2 {
-    margin: 0 0 12px 0;
-    font-size: 1.6rem;
-    color: #1a202c;
-  }
-  
-  .dato {
-    margin: 8px 0;
-    font-size: 0.95rem;
-    color: #4a5568;
-  }
-  
-  .dato strong {
-    color: #1a202c;
+    margin: 0 0 10px 0;
+    color: #ffffff;
+    font-size: 1.4rem;
   }
   
   .frase-box {
-    margin-top: 15px;
-    background-color: #f7fafc;
-    border-left: 4px solid #ffd900;
-    padding: 12px;
+    margin-top: 10px;
+    background-color: #272b33;
+    border-left: 3px solid #ffd900;
+    padding: 10px;
     border-radius: 4px;
+  }
+  
+  .frase-box p {
+    color: #e0e0e0;
     font-style: italic;
-    color: #2d3748;
+    font-size: 0.9rem;
+    margin: 0;
   }
