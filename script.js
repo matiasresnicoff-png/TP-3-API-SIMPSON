@@ -1,75 +1,88 @@
 var boton = document.getElementById('boton');
 var resultado = document.getElementById('resultado');
 
-// Biblioteca de imágenes garantizadas por personaje
-var imagenesPersonajes = {
-  "Homer Simpson": "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png",
-  "Marge Simpson": "https://upload.wikimedia.org/wikipedia/en/0/0b/Marge_Simpson.png",
-  "Bart Simpson": "https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_2006.png",
-  "Lisa Simpson": "https://upload.wikimedia.org/wikipedia/en/e/ec/Lisa_Simpson.png",
-  "Maggie Simpson": "https://upload.wikimedia.org/wikipedia/en/9/9d/Maggie_Simpson.png",
-  "Abe Simpson": "https://upload.wikimedia.org/wikipedia/en/a/a9/Grampa_Simpson.png",
-  "Ned Flanders": "https://upload.wikimedia.org/wikipedia/en/8/84/Ned_Flanders.png",
-  "Milhouse Van Houten": "https://upload.wikimedia.org/wikipedia/en/1/11/Milhouse_Van_Houten.png",
-  "Moe Szyslak": "https://upload.wikimedia.org/wikipedia/en/8/80/Moe_Szyslak.png",
-  "Charles Montgomery Burns": "https://upload.wikimedia.org/wikipedia/en/5/56/Mr_Burns.png"
-};
-
-// Traductor de ocupaciones y datos al español
-var traducciones = {
-  "Safety Inspector": "Inspector de seguridad",
-  "Housewife": "Ama de casa",
-  "Student at Springfield Elementary School": "Estudiante en la Primaria de Springfield",
-  "Unemployed": "Desempleado / Bebé",
-  "Retired": "Jubilado",
-  "Owner of The Leftorium": "Dueño del Izquierdarium",
-  "Bartender": "Cantinero / Dueño de taberna",
-  "Nuclear Power Plant Owner": "Dueño de la Planta Nuclear"
-};
-
-function obtenerImagen(nombre) {
-  if (imagenesPersonajes[nombre]) {
-    return imagenesPersonajes[nombre];
+// Base de datos de personajes verificada y en español
+var personajes = [
+  {
+    nombre: "Homero Simpson",
+    edad: 39,
+    ocupacion: "Inspector de Seguridad Nuclear",
+    frase: "¡D'oh! / ¡A la grande le puse Cuca!",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png"
+  },
+  {
+    nombre: "Marge Simpson",
+    edad: 36,
+    ocupacion: "Ama de casa",
+    frase: "Mmm... no lo sé, Homero.",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/0/0b/Marge_Simpson.png"
+  },
+  {
+    nombre: "Bart Simpson",
+    edad: 10,
+    ocupacion: "Estudiante de Primaria",
+    frase: "¡Yo no fui! / ¡Ay, caramba!",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/a/aa/Bart_Simpson_2006.png"
+  },
+  {
+    nombre: "Lisa Simpson",
+    edad: 8,
+    ocupacion: "Estudiante y Saxofonista",
+    frase: "¡Si alguien me necesita, estaré en mi habitación!",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/e/ec/Lisa_Simpson.png"
+  },
+  {
+    nombre: "Maggie Simpson",
+    edad: 1,
+    ocupacion: "Bebé",
+    frase: "(Chupeteo)",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/9/9d/Maggie_Simpson.png"
+  },
+  {
+    nombre: "Ned Flanders",
+    edad: 60,
+    ocupacion: "Dueño del Izquierdarium",
+    frase: "¡Hola, holita, vecirijillo!",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/8/84/Ned_Flanders.png"
+  },
+  {
+    nombre: "Moe Szyslak",
+    edad: 48,
+    ocupacion: "Cantinero",
+    frase: "Taberna de Moe, ¿habla la persona que busca a Amanda Vas a Gozar?",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/8/80/Moe_Szyslak.png"
+  },
+  {
+    nombre: "Sr. Burns",
+    edad: 104,
+    ocupacion: "Dueño de la Planta Nuclear",
+    frase: "Excelente...",
+    imagen: "https://upload.wikimedia.org/wikipedia/en/5/56/Mr_Burns.png"
   }
-  return "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png";
-}
-
-function traducirOcupacion(ocupacion) {
-  if (traducciones[ocupacion]) {
-    return traducciones[ocupacion];
-  }
-  return ocupacion;
-}
+];
 
 function obtenerPersonaje() {
-  // Genera un ID del 1 al 10
-  var id = Math.floor(Math.random() * 10) + 1;
+  // Elegir personaje aleatorio del arreglo
+  var indice = Math.floor(Math.random() * personajes.length);
+  var p = personajes[indice];
 
-  fetch('https://thesimpsonsapi.com/api/characters/' + id)
-    .then(function(respuesta) {
-      return respuesta.json();
-    })
-    .then(function(datos) {
-      // Bucle for clásico para armar la lista de frases
-      var listaFrases = '<ul>';
-      for (var i = 0; i < datos.phrases.length; i++) {
-        listaFrases = listaFrases + '<li>' + datos.phrases[i] + '</li>';
-      }
-      listaFrases = listaFrases + '</ul>';
-
-      var foto = obtenerImagen(datos.name);
-      var ocupacionEspañol = traducirOcupacion(datos.occupation);
-
-      // Insertamos el contenido estructurado
-      resultado.innerHTML = 
-        '<img src="' + foto + '" alt="' + datos.name + '">' +
-        '<div class="info">' +
-          '<h2>' + datos.name + '</h2>' +
-          '<p>Edad: <span>' + datos.age + ' años</span></p>' +
-          '<p>Ocupación: <span>' + ocupacionEspañol + '</span></p>' +
-          '<h3>Frases populares:</h3>' + listaFrases +
-        '</div>';
-    });
+  // Insertar en el HTML
+  resultado.className = ""; // Quitar estilo de vacio
+  resultado.innerHTML = 
+    '<img src="' + p.imagen + '" alt="' + p.nombre + '">' +
+    '<div class="info">' +
+      '<h2>' + p.nombre + '</h2>' +
+      '<p class="dato"><strong>Edad:</strong> ' + p.edad + ' años</p>' +
+      '<p class="dato"><strong>Ocupación:</strong> ' + p.ocupacion + '</p>' +
+      '<div class="frase-box">' +
+        '<p class="dato"><strong>Frase célebre:</strong></p>' +
+        '<p>"' + p.frase + '"</p>' +
+      '</div>' +
+    '</div>';
 }
 
+// Cargar un personaje al hacer clic
 boton.addEventListener('click', obtenerPersonaje);
+
+// Cargar un personaje al iniciar
+obtenerPersonaje();
